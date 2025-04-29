@@ -10,8 +10,8 @@ def healthCheck():
 
 @app.route('/query', methods=['POST'])
 def query():
-    game = request.json('game')
-    query = request.json('query')
+    game = request.json['game']
+    query = request.json['query']
     return query_rag("In the game of "+ game + ", "+ query)
 
 if __name__ == '__main__':
