@@ -2,7 +2,7 @@ import os, shutil
 from langchain.schema import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import Chroma
-from langchain_community.embeddings import OpenAIEmbeddings
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_community.document_loaders import PyPDFDirectoryLoader
 from dotenv import load_dotenv
 
@@ -28,7 +28,7 @@ def populate_database(chunks):
 
     db = Chroma. from_documents(
         chunks,
-        OpenAIEmbeddings(),
+        GoogleGenerativeAIEmbeddings(model="models/embedding-001"),
         persist_directory = DB_PATH
     )
     db.persist()

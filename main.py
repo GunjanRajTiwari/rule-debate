@@ -12,8 +12,8 @@ def healthCheck():
 def query():
     game = request.json['game']
     query = request.json['query']
-    return query_rag("In the game of "+ game + ", "+ query)
+    return {"result": query_rag("In the game of "+ game + ", "+ query)}
 
 if __name__ == '__main__':
-    # setup()
+    setup()
     app.run()
